@@ -13,3 +13,5 @@ pubkey3=$(bitcoin-cli -regtest -rpcwallet=btrustwallet decoderawtransaction "$ra
 pubkey4=$(bitcoin-cli -regtest -rpcwallet=btrustwallet decoderawtransaction "$rawtxhex" | jq -r ".vin[3] | .txinwitness[1]")
 
 address=$(bitcoin-cli -regtest -rpcwallet=btrustwallet -named createmultisig nrequired=1 keys='''["'$pubkey1'","'$pubkey2'","'$pubkey3'","'$pubkey4'"]''' | jq -r ".address")
+
+echo $address
